@@ -1,14 +1,11 @@
-FROM golang:1-alpine as builder
-RUN apk add --update git gcc musl-dev linux-headers
+FROM golang:1-alpine AS builder
+RUN apk --no-cache add gcc musl-dev linux-headers
+ADD . /source
+WORKDIR /source
+RUN go build -o ./sim .
 
-# Build the simulator executable.
-ADD . /sync
-WORKDIR /sync
-RUN go build -v .
-
-# Build the simulator run container.
+# Build the runner container.
 FROM alpine:latest
-ADD . /sync
-WORKDIR /sync
-COPY --from=builder /sync/sync ./sync
-ENTRYPOINT ["./sync"]
+ADD . /
+COPY --from=builder /source/sim /
+ENTRYPOINT ["./sim"]

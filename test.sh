@@ -52,6 +52,11 @@ function testdevp2p {
   run "./hive --sim devp2p --client $1 $FLAGS"
 }
 
+function testbundler {
+  echo "$(date) Starting p2p simulation in bundler [$1]"
+  run "./hive --sim erc4337/sync --client=$1 $FLAGS"
+}
+
 mkdir $RESULTS
 
 # Sync are quick tests
@@ -92,6 +97,9 @@ testgraphql besu_latest
 #testconsensus openethereum_latest
 #testconsensus nethermind_latest
 #testconsensus besu_latest
+
+# The ERC4337 bundler tests
+#testbundler skandha_latest
 
 
 
