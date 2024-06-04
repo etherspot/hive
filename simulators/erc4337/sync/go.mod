@@ -25,3 +25,4 @@ require (
 	golang.org/x/sys v0.11.0 // indirect
 	golang.org/x/tools v0.9.1 // indirect
 )
+replace github.com/ethereum/hive => ../../../../hive

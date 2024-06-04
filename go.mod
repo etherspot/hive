@@ -1,4 +1,4 @@
-module github.com/ethereum/hive
+module github.com/etherspot/hive
 
 go 1.20
 
@@ -86,3 +86,4 @@ require (
 )
 
 replace github.com/ethereum/hive/hiveproxy => ./hiveproxy
+replace github.com/ethereum/hive => ./hive
